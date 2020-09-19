@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Patients{% endblock title %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">	
+		<div class="col-auto">
+	      <div class="input-group mb-2">
+	        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search patient">
+	        <div class="input-group-prepend">
+	          <div class="input-group-text"><a>@</a></div>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+</div>
+<div class="row bg-primary py-3">
+	<div class="col-md-12 d-flex justify-content-between">
+		<h4 class="text-white">Patient List</h4>
+		<a class="btn btn-outline-light btn-sm" href="{% url 'patient:new_patient' %}">New</a>
+	</div>
+</div>
+<div class="row bg-light p-3 shadow-sm">
+  {% for patient in all_patient %}
+  		<div class="col-md-4">
+  			<div class="container">
+				<div class="card mt-3 bg-white border-0" style="max-width: 540px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4">
+				      <img src="{% if patient.image %}{{ patient.image.url }}{% else %}{% static 'img/author.png' %}{% endif %}" class="card-img" alt="{{ patient.name }}">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title">
+				        	<a href="{{ patient.get_absolute_url  }}" class="card-link stretched-link">
+				  				{{ patient.first_name|title }} {{ patient.last_name|title }}
+				  			</a>
+				        </h5>
+				        <p class="card-text">
+				        	<small class="text-muted">Phone: {{ patient.phone }}</small>
+				        </p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+  {% empty %}
+  		<div class="alert alert-light" role="alert">
+  			Oooops!!, No Patient Recorded Yet
+  		</div>
+  {% endfor %}
+</div>
+{% endblock content %}

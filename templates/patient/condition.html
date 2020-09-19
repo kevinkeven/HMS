@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Condition | Patient{% endblock title %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-12 mt-3">
+			<h3>Medical Condition</h3>
+			<div class="container p-4 shadow-lg bg-white">
+				<form method="POST">
+					{% csrf_token %}
+					{% crispy form %}
+				</form>
+			</div>			
+		</div>
+	</div>
+{% endblock content %}

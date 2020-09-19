@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-6">
+			<h4>You're all set</h4>
+			<p class="text-muted">You're receive a text message with an authentication code to enter when you log in </p>
+		</div>
+	</div>
+	<hr>
+	<div class="row bg-light">
+		<div class="col-md-6">
+			<div class="container mt-5">
+				<div class="card mb-3 shadow border-0" style="max-width: 540px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4 p-2">
+				      <img src="{% static 'img/patient.jpeg' %}" class="card-img" alt="...">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title"><a href="{% url 'patient:all_patient' %}" class="card-link">Patients</a></h5>
+				        <p class="card-text">View List of all patients and more info related to recorded patients that correspond to the given patients  </p>
+				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="container mt-5">
+				<div class="card mb-3 shadow border-0" style="max-width: 540px;">
+				  <div class="row no-gutters">
+				    <div class="col-md-4 p-2">
+				      <img src="{% static 'img/consolute.png' %}" class="card-img patient-img" alt="..." height="170"
+				      width="20">
+				    </div>
+				    <div class="col-md-8">
+				      <div class="card-body">
+				        <h5 class="card-title"><a href="" class="card-link">Today's Appointement</a></h5>
+				        <p class="card-text">View List of Appointement and more info related to recorded Appointement that correspond to the given Doctors  </p>
+				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+{% endblock content %}

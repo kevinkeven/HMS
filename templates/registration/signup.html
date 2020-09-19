@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Register - {{ block.super }}{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8 bg-primary d-flex justify-content-center">
+			<div class="p-4">
+				<h4 class="text-white">Register New Account</h4>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+	<div class="row border-top-0 border-secondary">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-8 shadow mb-5">
+			<div class="p-4 bg-white">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% crispy form %}
+				</form>
+			</div>			
+		</div>
+		<div class="col-md-2">
+		</div>
+	</div>
+{% endblock %}

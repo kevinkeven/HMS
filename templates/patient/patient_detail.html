@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ patient.first_name|title }} {{ patient.last_name|title }} - Patient{% endblock title %}
+
+{% block content %}
+<div class="shadow">
+	<div class="row d-flex justify-content-between p-3 bg-primary shadow-sm">
+		<h4 class="lead text-white" id="full-name">Personal Information for {{ patient.first_name|title }} {{ patient.last_name|title }}</h4>
+		<a href="{% url 'patient:patient_update' patient.id patient.slug %}" class="btn btn-outline-light btn-sm">Edit</a>
+	</div>
+	<div class="row bg-light shadow-sm">
+		<div class="col-md-2 py-3">
+			<img src="{% if patient.image %}{{ patient.image.url }}{% else %}{% static 'img/author.png' %}{% endif %}" class="" alt="{{ patient.name }}">
+		</div>
+	</div>
+	<div class="row bg-light shadow-sm">
+		<div class="col-md-12 py-3">
+			<table class="table table-borderless">
+			  <tbody>
+			    <tr>
+			      <th scope="row">First Name</th>
+			      <td>{{ patient.first_name|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Last Name</th>
+			      <td>{{ patient.last_name|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Address</th>
+			      <td>{{ patient.last_name|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Street Address</th>
+			      <td>{{ patient.street_address|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">City</th>
+			      <td>{{ patient.city|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">State</th>
+			      <td>{{ patient.state|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Street Address</th>
+			      <td>{{ patient.street_address|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Phone Number</th>
+			      <td>{{ patient.phone|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Email</th>
+			      <td>{{ patient.email|title }}</td>
+			    </tr>
+			    <tr>
+			      <th scope="row">Gender</th>
+			      <td>{{ patient.get_gender_display|title }}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 p-3 bg-primary">
+			<h3 class="lead text-white">Medical Condition</h3>
+		</div>
+	</div>
+	<div class="row bg-light shadow-sm">
+		<div class="col-md-12">
+			<table class="table table-borderless">
+			  <tbody>
+			    <tr>
+			      <th scope="row" class="b-type">Blood Type</th>
+			      <td>{{ condition.get_blood_type_display|upper }}</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}
